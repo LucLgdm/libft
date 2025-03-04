@@ -1,33 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-merc <lde-merc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 14:44:44 by lde-merc          #+#    #+#             */
-/*   Updated: 2025/03/04 14:39:49 by lde-merc         ###   ########.fr       */
+/*   Created: 2025/02/27 11:08:02 by lde-merc          #+#    #+#             */
+/*   Updated: 2025/02/27 11:08:20 by lde-merc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-size_t	ft_strlcat(char *dest, const char *src, size_t size)
+int	ft_isspace(char c)
 {
-	size_t	dest_size;
-	size_t	src_size;
-	size_t	i;
-
-	dest_size = ft_strlen(dest);
-	src_size = ft_strlen(src);
-	i = -1;
-	if (dest_size >= size || size == 0)
-		return (size + src_size);
-	else
-	{
-		while (++i + dest_size + 1 < size && src[i])
-			dest[i + dest_size] = src[i];
-	}
-	dest[dest_size + i] = '\0';
-	return (src_size + dest_size);
+	if ((c >= 9 && c <= 13) || c == 32)
+		return (1);
+	return (0);
 }

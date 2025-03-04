@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_isprime.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-merc <lde-merc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 14:44:44 by lde-merc          #+#    #+#             */
-/*   Updated: 2025/03/04 14:39:49 by lde-merc         ###   ########.fr       */
+/*   Created: 2025/03/04 17:19:46 by lde-merc          #+#    #+#             */
+/*   Updated: 2025/03/04 17:21:51 by lde-merc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-size_t	ft_strlcat(char *dest, const char *src, size_t size)
+bool	ft_isprime(int n)
 {
-	size_t	dest_size;
-	size_t	src_size;
-	size_t	i;
+	int	i;
 
-	dest_size = ft_strlen(dest);
-	src_size = ft_strlen(src);
-	i = -1;
-	if (dest_size >= size || size == 0)
-		return (size + src_size);
-	else
+	if (n == 2)
+		return (true);
+	if (n <= 1 || n % 2 == 0)
+		return (false);
+	i = 3;
+	while (i <= n / i)
 	{
-		while (++i + dest_size + 1 < size && src[i])
-			dest[i + dest_size] = src[i];
+		if (n % i == 0)
+			return (false);
+		i += 2;
 	}
-	dest[dest_size + i] = '\0';
-	return (src_size + dest_size);
+	return (true);
 }
