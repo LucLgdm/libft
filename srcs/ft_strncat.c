@@ -20,13 +20,17 @@ void	ft_strncat(char **dest, const char *src, size_t n)
 
 	if (!src || n == 0)
 		return ;
-	dest_len = ft_strlen(*dest);
+	if (*dest)
+		dest_len = ft_strlen(*dest);
+	else
+		dest_len = 0;
 	src_len = ft_strnlen(src, n);
 	new_str = malloc(dest_len + src_len + 1);
 	if (!new_str)
 		return ;
-	ft_strcpy(new_str, *dest);
-	ft_strlcat(new_str, src, n);
+	if (*dest)
+		ft_strcpy(new_str, *dest);
+	ft_strlcat(new_str, src, dest_len + src_len + 1);
 	free(*dest);
 	*dest = new_str;
 }
